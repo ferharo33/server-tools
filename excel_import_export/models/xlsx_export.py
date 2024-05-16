@@ -235,7 +235,7 @@ class XLSXExport(models.AbstractModel):
             out_file = template.datas
             return (out_file, out_name)
         # Prepare temp file (from now, only xlsx file works for openpyxl)
-        decoded_data = base64.decodestring(template.datas)
+        decoded_data = base64.decodebytes(template.datas)
         ConfParam = self.env["ir.config_parameter"].sudo()
         ptemp = ConfParam.get_param("path_temp_file") or "/tmp"
         stamp = dt.utcnow().strftime("%H%M%S%f")[:-3]
